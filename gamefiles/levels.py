@@ -1,12 +1,20 @@
-from gamefiles.setup import *
+import gamefiles.setup as setup
+import pygame
 
-def level(levelnumber):
+def play_level(levelnumber):
 
     if levelnumber == 1:
         level_1()
 
 def level_1():
-    screen.fill((255, 255, 255))
+    setup.screen.fill("gray")
 
-    pygame.draw.circle(screen, (0, 0, 255), (250, 250), 75)
+    
+    # draw cooking pan
+    pygame.draw.circle(setup.screen, "black", (setup.window_width / 2, setup.window_height / 2), 75)
+
+    
+
+
+
     pygame.display.flip()

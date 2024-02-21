@@ -1,22 +1,22 @@
 import pygame
 
-from gamefiles.setup import *
-from gamefiles.levels import *
+#from gamefiles.setup import setup2, running, screen, levelnumber
+#from gamefiles.levels import level, levelnumber
+
+import gamefiles.setup as setup
+import gamefiles.levels as levels
 
 def run():
-    global running, screen, levelnumber
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            setup.is_game_running = False
 
-    level(levelnumber)
+    levels.play_level(setup.levelnumber)
 
-    
+setup.run()
 
-setup()
-
-while running:
+while setup.is_game_running:
     run()
 
 pygame.quit()
