@@ -1,7 +1,9 @@
+import pygame
+
 class Ingredient:
-    def __init__(self, name, image, nutritional_value) -> None:
+    def __init__(self, name, imagepath, nutritional_value) -> None:
         self.name = name
-        self.image = image
+        self.image = pygame.image.load(imagepath)
         self.nutritional_value = nutritional_value
 
 class Food:
@@ -9,8 +11,9 @@ class Food:
         pass
 
 class Egg(Ingredient):
-    def __init__(self, name = "Egg", image = "", nutritional_value = 10) -> None:
-        super().__init__(name, image, nutritional_value)
+    def __init__(self, name = "Egg", imagepath = "assets/egg.png", nutritional_value = 10) -> None:
+        super().__init__(name, imagepath, nutritional_value)
 
 
-ingredient1 = Egg()
+# create food objects
+egg = Egg()
