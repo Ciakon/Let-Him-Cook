@@ -1,6 +1,6 @@
 import gamefiles.setup as setup
 from gamefiles.ingredients import egg
-from gamefiles.setup import window_height, window_width
+from gamefiles.setup import window_height, window_width, screen
 
 import pygame
 
@@ -27,17 +27,29 @@ def level_1():
     pygame.draw.circle(setup.screen, "black", (window_width / 2, window_height / 2), 75)
 
     # Draw egg
-    draw_image(egg.image, window_width / 2, window_height / 2)
+    #egg.position = [window_width / 2, window_height / 2]
+    move_object(egg)
+
+    egg.draw(screen)
     
 
     pygame.display.flip()
 
-def draw_image(image, x, y):
-    rect = image.get_rect()
-    width = rect[2]
-    height = rect[3]
+def move_object(obj):
+    if obj.is_moving:
+        obj.position = pygame.mouse.get_pos()
 
-    x -= width / 2
-    y -= height / 2
-    
-    setup.screen.blit(image, (x, y))
+    if setup.is_mouse_clicked:
+        mouse_pos = pygame.mouse.get_pos()
+        
+        x1 = obj.position[0] - obj.size[0] / 2
+        x2 = obj.position[0] + obj.size[0] / 2
+        y1 = obj.position[1] - obj.size[1] / 2
+        y2 = obj.position[1] + obj.size[1] / 2
+
+        if obj.is_moving:
+            obj.is_moving = False
+
+        elif mouse_pos[0] > x1 and mouse_pos[0] < x2 and mouse_pos[1] > y1 and mouse_pos[1] < y2:
+            if not obj.is_moving:
+                obj.is_moving = True    

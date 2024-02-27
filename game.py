@@ -12,6 +12,13 @@ def run():
         if event.type == pygame.QUIT:
             setup.is_game_running = False
 
+        setup.is_mouse_clicked = False
+        if event.type == pygame.MOUSEBUTTONUP:
+            setup.is_mouse_clicked = True
+            print("click")
+            
+                
+
     levels.play_level(setup.levelnumber)
 
 setup.run()
