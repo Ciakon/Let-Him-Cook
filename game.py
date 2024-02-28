@@ -15,9 +15,8 @@ def run():
         setup.is_mouse_clicked = False
         if event.type == pygame.MOUSEBUTTONUP:
             setup.is_mouse_clicked = True
-            print("click")
-            
-                
+
+        #print(setup.is_mouse_clickeds)                
 
     levels.play_level(setup.levelnumber)
 

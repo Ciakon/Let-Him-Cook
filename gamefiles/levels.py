@@ -38,6 +38,7 @@ def level_1():
 def move_object(obj):
     if obj.is_moving:
         obj.position = pygame.mouse.get_pos()
+        #print(setup.is_mouse_clicked)
 
     if setup.is_mouse_clicked:
         mouse_pos = pygame.mouse.get_pos()
@@ -52,4 +53,4 @@ def move_object(obj):
 
         elif mouse_pos[0] > x1 and mouse_pos[0] < x2 and mouse_pos[1] > y1 and mouse_pos[1] < y2:
             if not obj.is_moving:
-                obj.is_moving = True    
+                obj.is_moving = True
